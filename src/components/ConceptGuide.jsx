@@ -74,7 +74,7 @@ export default function ConceptGuide({ onSelectLab }) {
       description: `프론트엔드는 사용자가 AI 모델과 대화하거나 서비스를 이용할 수 있는 화면(UI)과 사용자 경험(UX)을 구축하는 영역입니다. AI 서비스에서는 단순히 이쁜 화면을 넘어서 **실시간 스트리밍 답변**과 **상호작용 렌더링**이 핵심입니다.`,
       keyPoints: [
         'HTML: 웹페이지의 뼈대와 구조를 정의',
-        'CSS: 디자인, 색상, 애니메이션, 현대적인 다크모드/글래스모피즘 스타일 적용',
+        'CSS: 디자인, 색상, 애니메이션, 현대적인 다크모드/라이트모드 스타일 적용',
         'JavaScript / React: 데이터 처리, AI 서버와의 통신, 사용자 클릭 이벤트 반응',
         'AI UX 핵심: LLM 특유의 글자가 한자씩 나오는 Streaming 텍스트 처리 및 Markdown UI 파싱'
       ],
@@ -148,48 +148,48 @@ async def ask_ai(prompt: str):
   const activeData = concepts.find(c => c.id === selectedConcept) || concepts[0];
 
   return (
-    <div className="animate-fade-in" style={{ paddingBottom: '40px' }}>
+    <div className="animate-fade-in" style={{ paddingBottom: '60px' }}>
       
       {/* Introduction Banner */}
-      <div className="glass-panel" style={{ padding: '28px', marginBottom: '28px', background: 'var(--gradient-card)' }}>
-        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
+      <div className="glass-panel" style={{ padding: '36px', marginBottom: '36px', background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)' }}>
+        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: '24px' }}>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
               <span className="badge badge-purple">AI Study Key concepts</span>
-              <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>5가지 필수 개발 개념</span>
+              <span style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', fontWeight: 500 }}>5가지 필수 개발 개념</span>
             </div>
-            <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '8px' }}>
+            <h2 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '12px', color: '#0f172a', letterSpacing: '-0.02em' }}>
               AI 서비스 개발을 위한 <span className="gradient-text">핵심 5대 용어</span>
             </h2>
-            <p style={{ color: 'var(--text-secondary)', maxWidth: '750px', fontSize: '0.95rem' }}>
+            <p style={{ color: 'var(--text-secondary)', maxWidth: '820px', fontSize: '1.05rem', lineHeight: 1.7 }}>
               AI 모델을 활용하고 서비스를 만드는데 필수적인 <strong>JSON, Markdown, 프론트엔드, 백엔드, DB(Vector DB)</strong>의 
               개념과 AI 생태계에서의 실질적인 역할을 학습하세요.
             </p>
           </div>
-          <div style={{ display: 'flex', gap: '12px' }}>
+          <div style={{ display: 'flex', gap: '14px' }}>
             <button 
               className="btn-primary" 
               onClick={() => onSelectLab('json-lab')}
-              style={{ fontSize: '0.85rem' }}
+              style={{ fontSize: '0.92rem', padding: '12px 22px' }}
             >
-              <Zap size={16} /> JSON 실습하기
+              <Zap size={18} /> JSON 실습하기
             </button>
             <button 
               className="btn-secondary" 
               onClick={() => onSelectLab('md-lab')}
-              style={{ fontSize: '0.85rem' }}
+              style={{ fontSize: '0.92rem', padding: '12px 22px' }}
             >
-              <FileText size={16} /> MD 실습하기
+              <FileText size={18} /> MD 실습하기
             </button>
           </div>
         </div>
       </div>
 
-      {/* Grid Layout: Left Cards selector, Right Detail View */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 1fr) minmax(400px, 1.8fr)', gap: '24px' }}>
+      {/* Grid Layout: Left Cards selector, Right Detail View with generous 32px gap */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(320px, 1fr) minmax(450px, 1.8fr)', gap: '32px' }}>
         
         {/* Left Column: Concept Selector List */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           {concepts.map((concept) => {
             const Icon = concept.icon;
             const isSelected = selectedConcept === concept.id;
@@ -199,34 +199,34 @@ async def ask_ai(prompt: str):
                 onClick={() => setSelectedConcept(concept.id)}
                 className="glass-panel"
                 style={{
-                  padding: '18px 20px',
+                  padding: '24px 26px',
                   cursor: 'pointer',
-                  transition: 'all 0.25 ease',
-                  borderLeft: isSelected ? '4px solid var(--accent-purple)' : '1px solid var(--border-color)',
-                  background: isSelected ? 'var(--bg-card-hover)' : 'rgba(17, 24, 39, 0.6)',
-                  boxShadow: isSelected ? 'var(--shadow-glow)' : 'none',
-                  transform: isSelected ? 'translateX(4px)' : 'none'
+                  transition: 'all 0.25s ease',
+                  borderLeft: isSelected ? '5px solid var(--accent-purple)' : '1px solid var(--border-color)',
+                  background: isSelected ? '#ffffff' : '#f8fafc',
+                  boxShadow: isSelected ? 'var(--shadow-hover)' : 'var(--shadow-card)',
+                  transform: isSelected ? 'translateX(6px)' : 'none'
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                     <div style={{
-                      width: '36px',
-                      height: '36px',
-                      borderRadius: '8px',
-                      background: isSelected ? 'var(--gradient-primary)' : 'rgba(255,255,255,0.05)',
+                      width: '42px',
+                      height: '42px',
+                      borderRadius: '12px',
+                      background: isSelected ? 'var(--gradient-primary)' : '#e2e8f0',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      color: '#fff'
+                      color: isSelected ? '#fff' : '#475569'
                     }}>
-                      <Icon size={18} />
+                      <Icon size={20} />
                     </div>
-                    <h3 style={{ fontSize: '1.05rem', fontWeight: 700 }}>{concept.title}</h3>
+                    <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#0f172a' }}>{concept.title}</h3>
                   </div>
                   <span className={`badge ${concept.badgeClass}`}>{concept.badge}</span>
                 </div>
-                <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.4 }}>
+                <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.6, paddingLeft: '54px' }}>
                   {concept.summary}
                 </p>
               </div>
@@ -235,33 +235,33 @@ async def ask_ai(prompt: str):
         </div>
 
         {/* Right Column: Detailed View of Selected Concept */}
-        <div className="glass-panel" style={{ padding: '30px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        <div className="glass-panel" style={{ padding: '36px', display: 'flex', flexDirection: 'column', gap: '28px' }}>
           
           {/* Header of Detail */}
-          <div style={{ borderBottom: '1px solid var(--border-color)', paddingBottom: '16px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
+          <div style={{ borderBottom: '1px solid var(--border-color)', paddingBottom: '20px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
               <span className={`badge ${activeData.badgeClass}`}>{activeData.badge}</span>
-              <span style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>AI 발표 주요 포인트</span>
+              <span style={{ color: 'var(--text-muted)', fontSize: '0.9rem', fontWeight: 500 }}>AI 발표 주요 포인트</span>
             </div>
-            <h2 style={{ fontSize: '1.8rem', fontWeight: 800, color: '#ffffff' }}>{activeData.title}</h2>
+            <h2 style={{ fontSize: '2rem', fontWeight: 800, color: '#0f172a' }}>{activeData.title}</h2>
           </div>
 
           {/* AI Importance Highlight Box */}
           <div style={{ 
             background: 'var(--gradient-glow)', 
-            border: '1px solid rgba(139, 92, 246, 0.3)', 
-            borderRadius: '12px', 
-            padding: '16px 20px',
+            border: '1px solid rgba(124, 58, 237, 0.2)', 
+            borderRadius: '16px', 
+            padding: '22px 24px',
             display: 'flex',
-            gap: '12px',
+            gap: '16px',
             alignItems: 'flex-start'
           }}>
-            <Lightbulb size={24} color="#c084fc" style={{ flexShrink: 0, marginTop: '2px' }} />
+            <Lightbulb size={28} color="var(--accent-purple)" style={{ flexShrink: 0, marginTop: '2px' }} />
             <div>
-              <h4 style={{ fontSize: '0.9rem', color: '#c084fc', fontWeight: 700, marginBottom: '4px' }}>
+              <h4 style={{ fontSize: '1rem', color: 'var(--accent-purple)', fontWeight: 800, marginBottom: '6px' }}>
                 🤖 AI 스터디에서의 중요성 & 활용
               </h4>
-              <p style={{ fontSize: '0.92rem', color: '#e2e8f0', lineHeight: 1.5 }}>
+              <p style={{ fontSize: '0.98rem', color: '#1e293b', lineHeight: 1.7, fontWeight: 500 }}>
                 {activeData.aiImportance}
               </p>
             </div>
@@ -269,23 +269,23 @@ async def ask_ai(prompt: str):
 
           {/* Description */}
           <div>
-            <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '8px', color: 'var(--text-primary)' }}>
+            <h4 style={{ fontSize: '1.05rem', fontWeight: 800, marginBottom: '10px', color: '#0f172a' }}>
               📌 개념 정의
             </h4>
-            <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+            <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>
               {activeData.description}
             </p>
           </div>
 
           {/* Key Feature Bullet Points */}
           <div>
-            <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '10px', color: 'var(--text-primary)' }}>
+            <h4 style={{ fontSize: '1.05rem', fontWeight: 800, marginBottom: '14px', color: '#0f172a' }}>
               ⚙️ 핵심 특징 및 규칙
             </h4>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {activeData.keyPoints.map((pt, idx) => (
-                <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.9rem', color: '#cbd5e1' }}>
-                  <CheckCircle2 size={16} color="#10b981" style={{ flexShrink: 0, marginTop: '3px' }} />
+                <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', fontSize: '0.95rem', color: '#334155', lineHeight: 1.6 }}>
+                  <CheckCircle2 size={18} color="#059669" style={{ flexShrink: 0, marginTop: '3px' }} />
                   <span>{pt}</span>
                 </li>
               ))}
@@ -294,18 +294,18 @@ async def ask_ai(prompt: str):
 
           {/* Real Code Example Box */}
           <div>
-            <h4 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '8px', color: 'var(--text-primary)' }}>
+            <h4 style={{ fontSize: '1rem', fontWeight: 800, marginBottom: '12px', color: '#0f172a' }}>
               💻 실체 예시
             </h4>
             <pre style={{
-              background: 'var(--bg-input)',
-              border: '1px solid var(--border-color)',
-              borderRadius: '10px',
-              padding: '16px',
+              background: '#0f172a',
+              border: '1px solid #1e293b',
+              borderRadius: '14px',
+              padding: '20px',
               color: '#38bdf8',
-              fontSize: '0.85rem',
+              fontSize: '0.9rem',
               overflowX: 'auto',
-              lineHeight: 1.5
+              lineHeight: 1.6
             }}>
               <code>{activeData.codeExample}</code>
             </pre>
@@ -313,14 +313,14 @@ async def ask_ai(prompt: str):
 
           {/* Quick Lab Button if available */}
           {activeData.labTarget && (
-            <div style={{ marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid var(--border-color)' }}>
+            <div style={{ marginTop: 'auto', paddingTop: '20px', borderTop: '1px solid var(--border-color)' }}>
               <button
                 className="btn-primary"
                 onClick={() => onSelectLab(activeData.labTarget)}
-                style={{ width: '100%', justifyContent: 'center' }}
+                style={{ width: '100%', justifyContent: 'center', padding: '14px' }}
               >
                 <span>{activeData.labLabel}</span>
-                <ArrowRight size={18} />
+                <ArrowRight size={20} />
               </button>
             </div>
           )}

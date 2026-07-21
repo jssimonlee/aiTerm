@@ -91,113 +91,114 @@ export default function QuizSection() {
   const score = calculateScore();
 
   return (
-    <div className="animate-fade-in" style={{ paddingBottom: '40px' }}>
+    <div className="animate-fade-in" style={{ paddingBottom: '60px' }}>
       
       {/* Top Banner */}
-      <div className="glass-panel" style={{ padding: '24px', marginBottom: '24px', background: 'var(--gradient-card)' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
+      <div className="glass-panel" style={{ padding: '32px', marginBottom: '32px', background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '24px' }}>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
               <span className="badge badge-amber">Self Check Quiz</span>
-              <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>스터디 복습 퀴즈</span>
+              <span style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', fontWeight: 500 }}>스터디 복습 퀴즈</span>
             </div>
-            <h2 style={{ fontSize: '1.6rem', fontWeight: 800 }}>
+            <h2 style={{ fontSize: '1.8rem', fontWeight: 800, color: '#0f172a' }}>
               💡 <span className="gradient-text">AI 용어 & 데이터 포맷 점검 퀴즈</span>
             </h2>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginTop: '4px' }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.98rem', marginTop: '6px' }}>
               오늘 발표한 5가지 주제(JSON, MD, Frontend, Backend, Vector DB)에 대한 퀴즈를 풀며 이해도를 확인하세요.
             </p>
           </div>
 
-          <div style={{ display: 'flex', gap: '12px' }}>
+          <div style={{ display: 'flex', gap: '14px' }}>
             {!showResults ? (
               <button 
                 className="btn-primary" 
                 onClick={() => setShowResults(true)}
                 disabled={Object.keys(selectedAnswers).length < quizQuestions.length}
-                style={{ opacity: Object.keys(selectedAnswers).length < quizQuestions.length ? 0.6 : 1 }}
+                style={{ opacity: Object.keys(selectedAnswers).length < quizQuestions.length ? 0.6 : 1, padding: '12px 24px' }}
               >
-                <Award size={18} /> 정답 채점하기
+                <Award size={20} /> 정답 채점하기
               </button>
             ) : (
-              <button className="btn-secondary" onClick={handleReset}>
-                <RotateCcw size={16} /> 퀴즈 다시 풀기
+              <button className="btn-secondary" onClick={handleReset} style={{ padding: '12px 24px' }}>
+                <RotateCcw size={18} /> 퀴즈 다시 풀기
               </button>
             )}
           </div>
         </div>
       </div>
 
-      {/* Score Summary Box (when results shown) */}
+      {/* Score Summary Box */}
       {showResults && (
         <div className="glass-panel" style={{
-          padding: '24px',
-          marginBottom: '24px',
-          background: score === 5 ? 'rgba(16, 185, 129, 0.12)' : 'rgba(139, 92, 246, 0.12)',
-          border: `1px solid ${score === 5 ? '#10b981' : 'var(--accent-purple)'}`,
+          padding: '32px',
+          marginBottom: '32px',
+          background: score === 5 ? '#d1fae5' : '#f3e8ff',
+          border: `2px solid ${score === 5 ? '#10b981' : '#7c3aed'}`,
           textAlign: 'center'
         }}>
-          <Sparkles size={36} color={score === 5 ? '#34d399' : '#c084fc'} style={{ margin: '0 auto 8px auto' }} />
-          <h3 style={{ fontSize: '1.5rem', fontWeight: 800 }}>
-            총점: <span style={{ color: score === 5 ? '#34d399' : '#c084fc' }}>{score} / {quizQuestions.length}점</span>
+          <Sparkles size={40} color={score === 5 ? '#059669' : '#7c3aed'} style={{ margin: '0 auto 12px auto' }} />
+          <h3 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#0f172a' }}>
+            총점: <span style={{ color: score === 5 ? '#059669' : '#7c3aed' }}>{score} / {quizQuestions.length}점</span>
           </h3>
-          <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', marginTop: '4px' }}>
+          <p style={{ fontSize: '1.05rem', color: '#334155', marginTop: '8px', fontWeight: 500 }}>
             {score === 5 ? '🎉 완벽합니다! AI 스터디 발표를 주도할 준비가 완료되었습니다!' : '👍 수고하셨습니다! 아래 해설을 읽어보며 핵심 개념을 다시 한번 복습하세요.'}
           </p>
         </div>
       )}
 
-      {/* Questions List */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+      {/* Questions List with spacious 24px gap */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
         {quizQuestions.map((q, qIndex) => {
           const isAnswered = selectedAnswers[q.id] !== undefined;
           const isCorrect = selectedAnswers[q.id] === q.correctAnswer;
 
           return (
-            <div key={q.id} className="glass-panel" style={{ padding: '24px' }}>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', marginBottom: '16px' }}>
+            <div key={q.id} className="glass-panel" style={{ padding: '32px' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '20px' }}>
                 <span style={{
-                  width: '28px',
-                  height: '28px',
+                  width: '32px',
+                  height: '32px',
                   borderRadius: '50%',
                   background: 'var(--gradient-primary)',
+                  color: '#ffffff',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontWeight: 800,
-                  fontSize: '0.85rem',
+                  fontSize: '0.95rem',
                   flexShrink: 0
                 }}>
                   {qIndex + 1}
                 </span>
-                <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#ffffff', lineHeight: 1.5 }}>
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#0f172a', lineHeight: 1.6 }}>
                   {q.question}
                 </h3>
               </div>
 
               {/* Options */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginLeft: '40px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginLeft: '48px' }}>
                 {q.options.map((opt, optIdx) => {
                   const isSelected = selectedAnswers[q.id] === optIdx;
-                  let bg = 'rgba(255, 255, 255, 0.03)';
-                  let border = '1px solid var(--border-color)';
-                  let textColor = 'var(--text-secondary)';
+                  let bg = '#f8fafc';
+                  let border = '1px solid #e2e8f0';
+                  let textColor = '#334155';
 
                   if (isSelected) {
-                    bg = 'rgba(139, 92, 246, 0.15)';
-                    border = '1px solid var(--accent-purple)';
-                    textColor = '#ffffff';
+                    bg = '#f3e8ff';
+                    border = '2px solid #7c3aed';
+                    textColor = '#6d28d9';
                   }
 
                   if (showResults) {
                     if (optIdx === q.correctAnswer) {
-                      bg = 'rgba(16, 185, 129, 0.2)';
-                      border = '1px solid #10b981';
-                      textColor = '#34d399';
+                      bg = '#d1fae5';
+                      border = '2px solid #059669';
+                      textColor = '#065f46';
                     } else if (isSelected && !isCorrect) {
-                      bg = 'rgba(239, 68, 68, 0.2)';
-                      border = '1px solid #ef4444';
-                      textColor = '#f87171';
+                      bg = '#fee2e2';
+                      border = '2px solid #dc2626';
+                      textColor = '#991b1b';
                     }
                   }
 
@@ -206,12 +207,13 @@ export default function QuizSection() {
                       key={optIdx}
                       onClick={() => handleSelectOption(q.id, optIdx)}
                       style={{
-                        padding: '12px 16px',
-                        borderRadius: '10px',
+                        padding: '14px 20px',
+                        borderRadius: '12px',
                         background: bg,
                         border: border,
                         color: textColor,
-                        fontSize: '0.92rem',
+                        fontSize: '0.98rem',
+                        fontWeight: isSelected ? 700 : 500,
                         cursor: showResults ? 'default' : 'pointer',
                         display: 'flex',
                         alignItems: 'center',
@@ -220,8 +222,8 @@ export default function QuizSection() {
                       }}
                     >
                       <span>{optIdx + 1}. {opt}</span>
-                      {showResults && optIdx === q.correctAnswer && <CheckCircle2 size={18} color="#34d399" />}
-                      {showResults && isSelected && !isCorrect && <XCircle size={18} color="#f87171" />}
+                      {showResults && optIdx === q.correctAnswer && <CheckCircle2 size={20} color="#059669" />}
+                      {showResults && isSelected && !isCorrect && <XCircle size={20} color="#dc2626" />}
                     </div>
                   );
                 })}
@@ -230,17 +232,17 @@ export default function QuizSection() {
               {/* Explanation (when results shown) */}
               {showResults && (
                 <div style={{
-                  marginTop: '16px',
-                  marginLeft: '40px',
-                  padding: '12px 16px',
-                  background: 'rgba(0, 0, 0, 0.3)',
-                  borderRadius: '8px',
-                  borderLeft: `4px solid ${isCorrect ? '#10b981' : '#f59e0b'}`,
-                  fontSize: '0.88rem',
-                  color: '#e2e8f0',
-                  lineHeight: 1.5
+                  marginTop: '20px',
+                  marginLeft: '48px',
+                  padding: '16px 20px',
+                  background: '#f1f5f9',
+                  borderRadius: '12px',
+                  borderLeft: `5px solid ${isCorrect ? '#059669' : '#d97706'}`,
+                  fontSize: '0.95rem',
+                  color: '#1e293b',
+                  lineHeight: 1.7
                 }}>
-                  <strong style={{ color: isCorrect ? '#34d399' : '#fbbf24' }}>
+                  <strong style={{ color: isCorrect ? '#059669' : '#b45309' }}>
                     {isCorrect ? '✅ 정답입니다!' : '💡 정답 해설:'}
                   </strong> {q.explanation}
                 </div>

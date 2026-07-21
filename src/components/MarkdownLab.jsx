@@ -83,80 +83,80 @@ vector = response.data[0].embedding
   };
 
   return (
-    <div className="animate-fade-in" style={{ paddingBottom: '40px' }}>
+    <div className="animate-fade-in" style={{ paddingBottom: '60px' }}>
       
       {/* Top Title Bar */}
-      <div className="glass-panel" style={{ padding: '24px', marginBottom: '24px', background: 'var(--gradient-card)' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
+      <div className="glass-panel" style={{ padding: '32px', marginBottom: '32px', background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '24px' }}>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
               <span className="badge badge-cyan">Interactive Practice</span>
-              <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>실시간 마크다운 라이브 에디터</span>
+              <span style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', fontWeight: 500 }}>실시간 마크다운 라이브 에디터</span>
             </div>
-            <h2 style={{ fontSize: '1.6rem', fontWeight: 800 }}>
+            <h2 style={{ fontSize: '1.8rem', fontWeight: 800, color: '#0f172a' }}>
               ✍️ <span className="gradient-text">Markdown 실습실</span> (MD Lab)
             </h2>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginTop: '4px' }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.98rem', marginTop: '6px' }}>
               AI 프롬프트 작성과 지식베이스 문서화에 필수적인 마크다운 서식을 직접 작성하고 렌더링 결과를 확인하세요.
             </p>
           </div>
 
           {/* Template Buttons */}
-          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
             <button className="btn-secondary" onClick={() => setMdInput(templates.systemPrompt)}>
-              <Sparkles size={14} /> AI System Prompt 템플릿
+              <Sparkles size={16} /> AI System Prompt 템플릿
             </button>
             <button className="btn-secondary" onClick={() => setMdInput(templates.ragDoc)}>
-              <FileText size={14} /> RAG 지식 문서
+              <FileText size={16} /> RAG 지식 문서
             </button>
             <button className="btn-secondary" onClick={() => setMdInput(templates.studyNote)}>
-              <List size={14} /> 스터디 노트
+              <List size={16} /> 스터디 노트
             </button>
           </div>
         </div>
       </div>
 
-      {/* Main Split Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(350px, 1fr) minmax(350px, 1fr)', gap: '24px' }}>
+      {/* Main Split Grid with 32px gap */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(350px, 1fr) minmax(350px, 1fr)', gap: '32px' }}>
         
         {/* Left Side: Markdown Input */}
-        <div className="glass-panel" style={{ padding: '20px', display: 'flex', flexDirection: 'column', height: '600px' }}>
+        <div className="glass-panel" style={{ padding: '28px', display: 'flex', flexDirection: 'column', height: '650px' }}>
           
           {/* Header & Quick Insert Toolbar */}
-          <div style={{ borderBottom: '1px solid var(--border-color)', paddingBottom: '12px', marginBottom: '12px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <FileText size={18} color="var(--accent-cyan)" />
-                <span style={{ fontWeight: 700, fontSize: '0.95rem' }}>마크다운 입력</span>
+          <div style={{ borderBottom: '1px solid var(--border-color)', paddingBottom: '16px', marginBottom: '16px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <FileText size={20} color="var(--accent-cyan)" />
+                <span style={{ fontWeight: 800, fontSize: '1.05rem', color: '#0f172a' }}>마크다운 입력</span>
               </div>
-              <div style={{ display: 'flex', gap: '6px' }}>
-                <button className="btn-secondary" onClick={handleCopy} style={{ fontSize: '0.78rem', padding: '4px 10px' }}>
-                  <Copy size={12} /> {copied ? '복사됨!' : '복사'}
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <button className="btn-secondary" onClick={handleCopy} style={{ fontSize: '0.82rem', padding: '6px 12px' }}>
+                  <Copy size={14} /> {copied ? '복사됨!' : '복사'}
                 </button>
-                <button className="btn-secondary" onClick={() => setMdInput(templates.systemPrompt)} style={{ fontSize: '0.78rem', padding: '4px 10px' }}>
-                  <RotateCcw size={12} /> 초기화
+                <button className="btn-secondary" onClick={() => setMdInput(templates.systemPrompt)} style={{ fontSize: '0.82rem', padding: '6px 12px' }}>
+                  <RotateCcw size={14} /> 초기화
                 </button>
               </div>
             </div>
 
             {/* Quick Formatting Buttons */}
-            <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', background: 'rgba(0,0,0,0.2)', padding: '6px', borderRadius: '8px' }}>
-              <button className="btn-secondary" onClick={() => insertText('# ')} style={{ padding: '4px 8px', fontSize: '0.78rem' }}>
+            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', background: '#f1f5f9', padding: '8px', borderRadius: '10px', border: '1px solid #e2e8f0' }}>
+              <button className="btn-secondary" onClick={() => insertText('# ')} style={{ padding: '6px 10px', fontSize: '0.82rem' }}>
                 <Heading size={14} /> H1
               </button>
-              <button className="btn-secondary" onClick={() => insertText('## ')} style={{ padding: '4px 8px', fontSize: '0.78rem' }}>
+              <button className="btn-secondary" onClick={() => insertText('## ')} style={{ padding: '6px 10px', fontSize: '0.82rem' }}>
                 <Heading size={12} /> H2
               </button>
-              <button className="btn-secondary" onClick={() => insertText('**', '**')} style={{ padding: '4px 8px', fontSize: '0.78rem' }}>
+              <button className="btn-secondary" onClick={() => insertText('**', '**')} style={{ padding: '6px 10px', fontSize: '0.82rem' }}>
                 <Bold size={14} /> Bold
               </button>
-              <button className="btn-secondary" onClick={() => insertText('```javascript\n', '\n```')} style={{ padding: '4px 8px', fontSize: '0.78rem' }}>
+              <button className="btn-secondary" onClick={() => insertText('```javascript\n', '\n```')} style={{ padding: '6px 10px', fontSize: '0.82rem' }}>
                 <Code size={14} /> Code Block
               </button>
-              <button className="btn-secondary" onClick={() => insertText('- ')} style={{ padding: '4px 8px', fontSize: '0.78rem' }}>
+              <button className="btn-secondary" onClick={() => insertText('- ')} style={{ padding: '6px 10px', fontSize: '0.82rem' }}>
                 <List size={14} /> List
               </button>
-              <button className="btn-secondary" onClick={() => insertText('| 항목 | 내용 |\n| --- | --- |\n| ', ' |')} style={{ padding: '4px 8px', fontSize: '0.78rem' }}>
+              <button className="btn-secondary" onClick={() => insertText('| 항목 | 내용 |\n| --- | --- |\n| ', ' |')} style={{ padding: '6px 10px', fontSize: '0.82rem' }}>
                 <Table size={14} /> Table
               </button>
             </div>
@@ -171,13 +171,13 @@ vector = response.data[0].embedding
             style={{
               flex: 1,
               width: '100%',
-              background: 'var(--bg-input)',
-              color: '#e2e8f0',
-              border: '1px solid var(--border-color)',
-              borderRadius: '8px',
-              padding: '16px',
-              fontSize: '0.88rem',
-              lineHeight: 1.6,
+              background: '#f8fafc',
+              color: '#0f172a',
+              border: '1px solid #cbd5e1',
+              borderRadius: '12px',
+              padding: '20px',
+              fontSize: '0.92rem',
+              lineHeight: 1.7,
               resize: 'none',
               outline: 'none'
             }}
@@ -185,12 +185,12 @@ vector = response.data[0].embedding
         </div>
 
         {/* Right Side: Formatted Live Preview */}
-        <div className="glass-panel" style={{ padding: '20px', display: 'flex', flexDirection: 'column', height: '600px' }}>
+        <div className="glass-panel" style={{ padding: '28px', display: 'flex', flexDirection: 'column', height: '650px' }}>
           
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px', paddingBottom: '12px', borderBottom: '1px solid var(--border-color)' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Eye size={18} color="var(--accent-cyan)" />
-              <span style={{ fontWeight: 700, fontSize: '0.95rem' }}>실시간 서식 프리뷰 (Formatted Preview)</span>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px', paddingBottom: '16px', borderBottom: '1px solid var(--border-color)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <Eye size={20} color="var(--accent-cyan)" />
+              <span style={{ fontWeight: 800, fontSize: '1.05rem', color: '#0f172a' }}>실시간 서식 프리뷰 (Formatted Preview)</span>
             </div>
             <span className="badge badge-cyan">Live Render</span>
           </div>
@@ -200,99 +200,103 @@ vector = response.data[0].embedding
             style={{
               flex: 1,
               overflowY: 'auto',
-              background: 'rgba(15, 23, 42, 0.6)',
-              border: '1px solid var(--border-color)',
-              borderRadius: '8px',
-              padding: '24px',
-              color: '#f1f5f9',
-              lineHeight: 1.7
+              background: '#ffffff',
+              border: '1px solid #e2e8f0',
+              borderRadius: '12px',
+              padding: '28px',
+              color: '#1e293b',
+              lineHeight: 1.8
             }}
             dangerouslySetInnerHTML={{ __html: getParsedHtml() }}
-            className="markdown-preview-body"
+            className="markdown-preview-body-light"
           />
 
         </div>
 
       </div>
 
-      {/* Styling for Markdown Preview elements */}
+      {/* Light Styling for Markdown Preview elements */}
       <style>{`
-        .markdown-preview-body h1 {
-          font-size: 1.6rem;
-          color: #38bdf8;
-          border-bottom: 2px solid rgba(56, 189, 248, 0.3);
-          padding-bottom: 6px;
-          margin-bottom: 14px;
+        .markdown-preview-body-light h1 {
+          font-size: 1.75rem;
+          color: #0284c7;
+          border-bottom: 2px solid #bae6fd;
+          padding-bottom: 8px;
+          margin-bottom: 16px;
           margin-top: 10px;
+          font-weight: 800;
         }
-        .markdown-preview-body h2 {
-          font-size: 1.3rem;
-          color: #c084fc;
-          margin-top: 18px;
+        .markdown-preview-body-light h2 {
+          font-size: 1.4rem;
+          color: #7c3aed;
+          margin-top: 22px;
+          margin-bottom: 12px;
+          font-weight: 700;
+        }
+        .markdown-preview-body-light h3 {
+          font-size: 1.15rem;
+          color: #059669;
+          margin-top: 16px;
           margin-bottom: 10px;
+          font-weight: 700;
         }
-        .markdown-preview-body h3 {
-          font-size: 1.1rem;
-          color: #34d399;
-          margin-top: 14px;
-          margin-bottom: 8px;
-        }
-        .markdown-preview-body p {
-          margin-bottom: 12px;
-          color: #cbd5e1;
-        }
-        .markdown-preview-body ul, .markdown-preview-body ol {
-          margin-left: 20px;
-          margin-bottom: 12px;
-          color: #e2e8f0;
-        }
-        .markdown-preview-body li {
-          margin-bottom: 4px;
-        }
-        .markdown-preview-body blockquote {
-          border-left: 4px solid var(--accent-purple);
-          padding-left: 12px;
-          color: #cbd5e1;
-          background: rgba(139, 92, 246, 0.1);
-          padding: 10px 14px;
-          border-radius: 4px;
-          margin-bottom: 12px;
-        }
-        .markdown-preview-body code {
-          background: rgba(0, 0, 0, 0.4);
-          color: #f472b6;
-          padding: 2px 6px;
-          border-radius: 4px;
-          font-family: 'JetBrains Mono', monospace;
-          font-size: 0.85rem;
-        }
-        .markdown-preview-body pre {
-          background: #090d16;
-          padding: 14px;
-          border-radius: 8px;
-          overflow-x: auto;
+        .markdown-preview-body-light p {
           margin-bottom: 14px;
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          color: #334155;
         }
-        .markdown-preview-body pre code {
+        .markdown-preview-body-light ul, .markdown-preview-body-light ol {
+          margin-left: 24px;
+          margin-bottom: 14px;
+          color: #334155;
+        }
+        .markdown-preview-body-light li {
+          margin-bottom: 6px;
+        }
+        .markdown-preview-body-light blockquote {
+          border-left: 4px solid #7c3aed;
+          padding: 12px 18px;
+          color: #4c1d95;
+          background: #f3e8ff;
+          border-radius: 6px;
+          margin-bottom: 16px;
+        }
+        .markdown-preview-body-light code {
+          background: #f1f5f9;
+          color: #db2777;
+          padding: 3px 8px;
+          border-radius: 6px;
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 0.88rem;
+          border: 1px solid #e2e8f0;
+        }
+        .markdown-preview-body-light pre {
+          background: #0f172a;
+          padding: 18px;
+          border-radius: 12px;
+          overflow-x: auto;
+          margin-bottom: 16px;
+        }
+        .markdown-preview-body-light pre code {
           background: transparent;
           color: #38bdf8;
           padding: 0;
+          border: none;
         }
-        .markdown-preview-body table {
+        .markdown-preview-body-light table {
           width: 100%;
           border-collapse: collapse;
-          margin-bottom: 14px;
-          font-size: 0.88rem;
+          margin-bottom: 16px;
+          font-size: 0.9rem;
         }
-        .markdown-preview-body th, .markdown-preview-body td {
-          border: 1px solid rgba(255, 255, 255, 0.15);
-          padding: 8px 12px;
+        .markdown-preview-body-light th, .markdown-preview-body-light td {
+          border: 1px solid #e2e8f0;
+          padding: 10px 14px;
           text-align: left;
         }
-        .markdown-preview-body th {
-          background: rgba(255, 255, 255, 0.08);
-          color: #c084fc;
+        .markdown-preview-body-light th {
+          background: #f8fafc;
+          color: #6d28d9;
+          font-weight: 700;
         }
       `}</style>
 
