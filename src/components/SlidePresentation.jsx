@@ -7,30 +7,30 @@ export default function SlidePresentation({ onClose, onSelectLab }) {
   const slides = [
     {
       id: 'intro',
-      tag: '발표 개요',
-      title: 'AI 생태계를 이루는 핵심 용어 & 데이터 포맷 입문',
-      subtitle: 'JSON, Markdown, Frontend, Backend, DB에 대한 명쾌한 정리',
+      tag: '초보자 발표 개요',
+      title: 'AI 생태계를 이루는 5가지 쉬운 개발 용어 입문',
+      subtitle: 'JSON, Markdown, Frontend, Backend, DB 완벽 이해하기',
       icon: Sparkles,
       color: '#7c3aed',
       content: (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', alignItems: 'center', textAlign: 'center' }}>
-          <div style={{ background: '#f3e8ff', padding: '32px', borderRadius: '20px', border: '1px solid #e9d5ff', maxWidth: '820px' }}>
-            <p style={{ fontSize: '1.2rem', color: '#4c1d95', lineHeight: 1.8, fontWeight: 500 }}>
-              오늘 스터디에서는 **AI 모델(LLM)을 실제로 서비스화하거나 프롬프트를 다룰 때 반드시 알아야 하는 5가지 핵심 주제**를 함께 살펴보고 직접 실습해봅니다!
+          <div style={{ background: '#f3e8ff', padding: '32px', borderRadius: '20px', border: '1px solid #e9d5ff', maxWidth: '850px' }}>
+            <p style={{ fontSize: '1.2rem', color: '#4c1d95', lineHeight: 1.8, fontWeight: 600 }}>
+              복잡한 코딩 지식 없이도 OK! **스마트폰 앱과 AI가 대화하고 문서를 주고받는 5가지 핵심 개념**을 재미있는 실생활 비유로 풀어드립니다.
             </p>
           </div>
           
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '18px', width: '100%', maxWidth: '900px', marginTop: '8px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '18px', width: '100%', maxWidth: '920px', marginTop: '8px' }}>
             {[
-              { label: 'JSON 파일', desc: '데이터 전송 포맷', color: '#7c3aed', bg: '#f3e8ff' },
-              { label: 'Markdown (.md)', desc: 'AI 지시문 작성 포맷', color: '#0284c7', bg: '#e0f2fe' },
-              { label: '프론트엔드', desc: '스트리밍 Chat UI', color: '#db2777', bg: '#fce7f3' },
-              { label: '백엔드', desc: 'API 키 보안 & 서버', color: '#059669', bg: '#d1fae5' },
-              { label: 'Vector DB', desc: 'RAG & 임베딩 검색', color: '#d97706', bg: '#fef3c7' },
+              { label: 'JSON 메모지', desc: '앱 ↔ AI 통신 서류', color: '#7c3aed', bg: '#f3e8ff' },
+              { label: 'Markdown 문서', desc: 'AI ↔ 사람 최고 언어', color: '#0284c7', bg: '#e0f2fe' },
+              { label: '프론트엔드', desc: '손님이 보는 카페 카운터', color: '#db2777', bg: '#fce7f3' },
+              { label: '백엔드', desc: '보이지 않는 카페 주방', color: '#059669', bg: '#d1fae5' },
+              { label: 'Vector DB', desc: '의미로 찾는 AI 도서관', color: '#d97706', bg: '#fef3c7' },
             ].map((item, idx) => (
               <div key={idx} style={{ background: item.bg, border: `1px solid ${item.color}30`, padding: '20px 14px', borderRadius: '16px', textAlign: 'center' }}>
                 <div style={{ color: item.color, fontWeight: 800, fontSize: '1.1rem', marginBottom: '6px' }}>{item.label}</div>
-                <div style={{ fontSize: '0.85rem', color: '#475569', fontWeight: 500 }}>{item.desc}</div>
+                <div style={{ fontSize: '0.88rem', color: '#475569', fontWeight: 500 }}>{item.desc}</div>
               </div>
             ))}
           </div>
@@ -40,40 +40,38 @@ export default function SlidePresentation({ onClose, onSelectLab }) {
     {
       id: 'json',
       tag: 'Topic 01',
-      title: 'JSON (JavaScript Object Notation)',
-      subtitle: '사람과 AI, 서버가 대화하는 표준 데이터 교환 언어',
+      title: 'JSON: 앱 간 통신의 표준 메모지',
+      subtitle: '서로 다른 서비스(스마트폰 앱 ↔ AI 서버)가 대화하는 포장된 택배 상자!',
       icon: Code,
       color: '#7c3aed',
       content: (
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px', alignItems: 'center' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-            <div className="badge badge-purple" style={{ width: 'fit-content' }}>Key Concept</div>
-            <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0f172a' }}>💡 핵심 정리</h3>
+            <div className="badge badge-purple" style={{ width: 'fit-content' }}>앱 간 통신의 핵심</div>
+            <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0f172a' }}>💡 초보자를 위한 개념 설명</h3>
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '14px', listStyle: 'none' }}>
               <li style={{ display: 'flex', gap: '12px', fontSize: '1.05rem', color: '#334155', lineHeight: 1.6 }}>
                 <CheckCircle2 color="#7c3aed" size={24} style={{ flexShrink: 0 }} />
-                <span><strong>Key-Value (키-값)</strong> 구조의 경량 데이터 포맷</span>
+                <span><strong>API 통신 서류:</strong> 앱에서 AI로 질문을 보내고 대답을 받을 때 쓰는 메모지</span>
               </li>
               <li style={{ display: 'flex', gap: '12px', fontSize: '1.05rem', color: '#334155', lineHeight: 1.6 }}>
                 <CheckCircle2 color="#7c3aed" size={24} style={{ flexShrink: 0 }} />
-                <span><strong>AI에서의 용도:</strong> LLM API 요청 payload, Structured Output (JSON Mode)</span>
+                <span><strong>Key-Value 방식:</strong> "질문": "안녕" 처럼 이름표와 값이 짝을 이룸</span>
               </li>
               <li style={{ display: 'flex', gap: '12px', fontSize: '1.05rem', color: '#334155', lineHeight: 1.6 }}>
                 <CheckCircle2 color="#7c3aed" size={24} style={{ flexShrink: 0 }} />
-                <span><strong>주의 규칙:</strong> Key는 반드시 큰따옴표(<code>"key"</code>), Trailing Comma 불가</span>
+                <span><strong>DB와의 차이점:</strong> JSON은 [주고받는 택배 상자/파일]이고, DB는 [수백만 개를 안전하게 보관하는 대형 도서관 금고]!</span>
               </li>
             </ul>
           </div>
           <div style={{ background: '#0f172a', border: '1px solid #1e293b', padding: '24px', borderRadius: '16px' }}>
-            <div style={{ fontSize: '0.85rem', color: '#a7f3d0', marginBottom: '10px', fontWeight: 700 }}>OpenAI API JSON Payload 예시</div>
+            <div style={{ fontSize: '0.88rem', color: '#a7f3d0', marginBottom: '10px', fontWeight: 700 }}>스마트폰 ➔ AI 전송 메세지 예시</div>
             <pre className="code-font" style={{ fontSize: '0.92rem', color: '#38bdf8', overflowX: 'auto', lineHeight: 1.6 }}>
 {`{
-  "model": "gpt-4o",
-  "messages": [
-    { "role": "system", "content": "AI 튜터" },
-    { "role": "user", "content": "JSON이란?" }
-  ],
-  "temperature": 0.7
+  "보낸이": "사용자",
+  "AI모델": "ChatGPT",
+  "질문": "JSON이 뭐야?",
+  "답변언어": "한국어"
 }`}
             </pre>
           </div>
@@ -83,42 +81,40 @@ export default function SlidePresentation({ onClose, onSelectLab }) {
     {
       id: 'markdown',
       tag: 'Topic 02',
-      title: 'MD (Markdown) 파일',
-      subtitle: '특수문자로 서식을 주는 경량 마크업 언어 (.md)',
+      title: 'MD (Markdown): AI와 사람의 최고 대화 언어',
+      subtitle: '사람도 읽기 쉽고 AI도 가장 잘 이해하는 친절한 문서 포맷!',
       icon: FileText,
       color: '#0284c7',
       content: (
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px', alignItems: 'center' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-            <div className="badge badge-cyan" style={{ width: 'fit-content' }}>AI Writing Standard</div>
-            <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0f172a' }}>💡 AI에서의 압도적 가치</h3>
+            <div className="badge badge-cyan" style={{ width: 'fit-content' }}>AI 대화 전용 언어</div>
+            <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0f172a' }}>💡 왜 AI에게 마크다운이 최고일까?</h3>
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '14px', listStyle: 'none' }}>
               <li style={{ display: 'flex', gap: '12px', fontSize: '1.05rem', color: '#334155', lineHeight: 1.6 }}>
                 <CheckCircle2 color="#0284c7" size={24} style={{ flexShrink: 0 }} />
-                <span><strong>System Prompt 작성:</strong> AI에게 명확한 규칙과 역할을 부여할 때 최적</span>
+                <span><strong>명확한 규칙 전달:</strong> `# 제목`, `**강조**` 만으로 AI가 지시문(System Prompt)을 찰떡같이 인식</span>
               </li>
               <li style={{ display: 'flex', gap: '12px', fontSize: '1.05rem', color: '#334155', lineHeight: 1.6 }}>
                 <CheckCircle2 color="#0284c7" size={24} style={{ flexShrink: 0 }} />
-                <span><strong>LLM 답변의 표준 출력:</strong> 제목, 코드블록, 표 형식 렌더링</span>
+                <span><strong>거짓말(환각) 방지:</strong> 마크다운으로 역할을 정돈해서 알려주면 AI가 헛소리를 줄임!</span>
               </li>
               <li style={{ display: 'flex', gap: '12px', fontSize: '1.05rem', color: '#334155', lineHeight: 1.6 }}>
                 <CheckCircle2 color="#0284c7" size={24} style={{ flexShrink: 0 }} />
-                <span><strong>RAG 문서 저장:</strong> 지식베이스 문서를 쪼갤 때 가장 널리 쓰임</span>
+                <span><strong>표/코드 구분:</strong> AI가 답변을 정리된 표나 코드 상자로 예쁘게 전달함</span>
               </li>
             </ul>
           </div>
           <div style={{ background: '#0f172a', border: '1px solid #1e293b', padding: '24px', borderRadius: '16px' }}>
-            <div style={{ fontSize: '0.85rem', color: '#38bdf8', marginBottom: '10px', fontWeight: 700 }}>Markdown 문법 예시</div>
+            <div style={{ fontSize: '0.88rem', color: '#38bdf8', marginBottom: '10px', fontWeight: 700 }}>AI 지시문 (System Prompt) 예시</div>
             <pre className="code-font" style={{ fontSize: '0.9rem', color: '#e2e8f0', overflowX: 'auto', lineHeight: 1.6 }}>
-{`# 🤖 AI 스터디 지시문
+{`# 🤖 AI 선생님 지시문
 
-## 1. 역할 정의
-너는 **친절한 AI 강사**이다.
+## 1. 역할
+너는 **친절한 AI 선생님**이다.
 
-## 2. 출력 예시
-\`\`\`js
-console.log("Hello AI Study!");
-\`\`\``}
+## 2. 규칙
+- 답변은 반드시 마크다운 표로 정리할 것!`}
             </pre>
           </div>
         </div>
@@ -127,35 +123,35 @@ console.log("Hello AI Study!");
     {
       id: 'frontend',
       tag: 'Topic 03',
-      title: '프론트엔드 (Frontend)',
-      subtitle: '사용자가 직접 조작하는 웹 화면 & AI 스트리밍 UI',
+      title: '프론트엔드 (Frontend): 카페 카운터 & 메뉴판',
+      subtitle: '사용자가 직접 조작하는 웹 화면 & 타이핑 스트리밍 UI',
       icon: Monitor,
       color: '#db2777',
       content: (
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px', alignItems: 'center' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-            <div className="badge badge-pink" style={{ width: 'fit-content' }}>User Experience</div>
-            <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0f172a' }}>💡 AI UX의 핵심 요소</h3>
+            <div className="badge badge-pink" style={{ width: 'fit-content' }}>사용자 접점</div>
+            <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0f172a' }}>💡 손님이 접하는 화면의 역할</h3>
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '14px', listStyle: 'none' }}>
               <li style={{ display: 'flex', gap: '12px', fontSize: '1.05rem', color: '#334155', lineHeight: 1.6 }}>
                 <CheckCircle2 color="#db2777" size={24} style={{ flexShrink: 0 }} />
-                <span><strong>HTML / CSS / JS / React:</strong> 웹페이지 뼈대, 디자인, 인터랙션 구현</span>
+                <span><strong>카페 카운터 비유:</strong> 손님이 메뉴판을 보고 주문(버튼 클릭)하는 화면</span>
               </li>
               <li style={{ display: 'flex', gap: '12px', fontSize: '1.05rem', color: '#334155', lineHeight: 1.6 }}>
                 <CheckCircle2 color="#db2777" size={24} style={{ flexShrink: 0 }} />
-                <span><strong>실시간 스트리밍 (Streaming):</strong> ChatGPT처럼 글자가 한자씩 나타나는 경험</span>
+                <span><strong>타이핑 스트리밍 UI:</strong> AI의 대답이 답답하지 않게 한 글자씩 쳐지는 반응형 대화창</span>
               </li>
               <li style={{ display: 'flex', gap: '12px', fontSize: '1.05rem', color: '#334155', lineHeight: 1.6 }}>
                 <CheckCircle2 color="#db2777" size={24} style={{ flexShrink: 0 }} />
-                <span><strong>Markdown 파싱:</strong> LLM이 보내온 마크다운을 예쁜 HTML로 변환</span>
+                <span><strong>예쁜 서식 변환:</strong> AI가 보낸 마크다운 글씨를 사용자가 보기 쉽게 가공</span>
               </li>
             </ul>
           </div>
           <div style={{ background: '#fce7f3', border: '1px solid #fbcfe8', padding: '32px', borderRadius: '20px', textAlign: 'center' }}>
-            <div style={{ fontSize: '2.8rem', marginBottom: '14px' }}>💻 💬 ⚡</div>
-            <h4 style={{ color: '#db2777', fontWeight: 800, fontSize: '1.3rem', marginBottom: '10px' }}>Streaming Chat UI</h4>
+            <div style={{ fontSize: '2.8rem', marginBottom: '14px' }}>☕ 💬 ⚡</div>
+            <h4 style={{ color: '#db2777', fontWeight: 800, fontSize: '1.3rem', marginBottom: '10px' }}>손님이 보는 대화창</h4>
             <p style={{ fontSize: '1rem', color: '#831843', lineHeight: 1.6 }}>
-              사용자가 질문하면 서버와의 SSE(Server-Sent Events) 연결을 통해 답을 실시간 수신!
+              사용자의 클릭과 질문을 받고, AI의 생생한 답변을 실시간으로 그려주는 화면!
             </p>
           </div>
         </div>
@@ -164,41 +160,41 @@ console.log("Hello AI Study!");
     {
       id: 'backend',
       tag: 'Topic 04',
-      title: '백엔드 (Backend)',
-      subtitle: 'API 키 보안, 서버 로직 & 프롬프트 조립(Orchestration)',
+      title: '백엔드 (Backend): 카페 주방 & 비밀 레시피',
+      subtitle: 'API 키 보안 유지 및 서버에서 질문 조립하기',
       icon: Server,
       color: '#059669',
       content: (
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px', alignItems: 'center' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-            <div className="badge badge-green" style={{ width: 'fit-content' }}>Security & Logic</div>
-            <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0f172a' }}>💡 백엔드가 필요한 이유</h3>
+            <div className="badge badge-green" style={{ width: 'fit-content' }}>보안 및 서버 로직</div>
+            <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0f172a' }}>💡 보이지 않는 주방의 역할</h3>
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '14px', listStyle: 'none' }}>
               <li style={{ display: 'flex', gap: '12px', fontSize: '1.05rem', color: '#334155', lineHeight: 1.6 }}>
                 <CheckCircle2 color="#059669" size={24} style={{ flexShrink: 0 }} />
-                <span><strong>API Key 보안:</strong> OpenAI 비밀키가 프론트엔드에 노출되지 않게 방어</span>
+                <span><strong>비밀 열쇠(API Key) 보호:</strong> 해커가 비싼 AI 비밀키를 훔쳐가지 못하게 방어</span>
               </li>
               <li style={{ display: 'flex', gap: '12px', fontSize: '1.05rem', color: '#334155', lineHeight: 1.6 }}>
                 <CheckCircle2 color="#059669" size={24} style={{ flexShrink: 0 }} />
-                <span><strong>Prompt Orchestration:</strong> DB 지식 + 유저 질문을 합쳐 LLM에 보냄</span>
+                <span><strong>질문 요리하기:</strong> 유저 질문 + 과거 대화 + 회사 문서를 묶어서 AI에 전송</span>
               </li>
-              <li style={{ display: 'flex', gap: '12px', fontSize: '1.05rem', color: '#334155', lineHeight: 1.6 }}>
+              <li style={{ display: 'flex', gap: '12px', fontSize: '1.05rem', color: '#059669', lineHeight: 1.6 }}>
                 <CheckCircle2 color="#059669" size={24} style={{ flexShrink: 0 }} />
-                <span><strong>주요 프레임워크:</strong> Python (FastAPI - AI 생태계 대표), Node.js</span>
+                <span><strong>대표 기술:</strong> Python (FastAPI - AI 서비스 개발 필수)</span>
               </li>
             </ul>
           </div>
           <div style={{ background: '#0f172a', border: '1px solid #1e293b', padding: '24px', borderRadius: '16px' }}>
-            <div style={{ fontSize: '0.85rem', color: '#a7f3d0', marginBottom: '10px', fontWeight: 700 }}>Python FastAPI AI 호출 예시</div>
+            <div style={{ fontSize: '0.88rem', color: '#a7f3d0', marginBottom: '10px', fontWeight: 700 }}>Python 서버 백엔드 예시</div>
             <pre className="code-font" style={{ fontSize: '0.88rem', color: '#a7f3d0', overflowX: 'auto', lineHeight: 1.6 }}>
-{`@app.post("/api/chat")
-async def chat(user_msg: str):
-    # 백엔드 서버에서만 안전하게 API Key 사용
-    response = openai.chat.completions.create(
-        model="gpt-4o",
-        messages=[{"role": "user", "content": user_msg}]
+{`@app.post("/ask-ai")
+def ask_ai(question):
+    # 비밀 키는 서버 주방 안에서만 안전하게!
+    answer = call_ai_model(
+        question, 
+        secret_key="SK-SECRET"
     )
-    return {"answer": response.choices[0].message.content}`}
+    return {"answer": answer}`}
             </pre>
           </div>
         </div>
@@ -207,37 +203,35 @@ async def chat(user_msg: str):
     {
       id: 'database',
       tag: 'Topic 05',
-      title: '데이터베이스 (DB & Vector DB)',
-      subtitle: '전통적 데이터 저장소 vs AI 검색의 핵심 Vector DB',
+      title: '데이터베이스 (DB): 거대 금고 & Vector DB',
+      subtitle: '안전한 대용량 저장소 + 의미로 찾는 AI 전용 도서관!',
       icon: Database,
       color: '#d97706',
       content: (
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px', alignItems: 'center' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-            <div className="badge badge-amber" style={{ width: 'fit-content' }}>RAG & Vector Search</div>
-            <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0f172a' }}>💡 Vector DB와 RAG(검색증강생성)</h3>
+            <div className="badge badge-amber" style={{ width: 'fit-content' }}>데이터 저장 & RAG</div>
+            <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0f172a' }}>💡 일반 DB vs Vector DB</h3>
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '14px', listStyle: 'none' }}>
               <li style={{ display: 'flex', gap: '12px', fontSize: '1.05rem', color: '#334155', lineHeight: 1.6 }}>
                 <CheckCircle2 color="#d97706" size={24} style={{ flexShrink: 0 }} />
-                <span><strong>RDB / NoSQL:</strong> 일반적인 회원 정보, 결제, 대화 세션 기록 저장</span>
+                <span><strong>일반 DB:</strong> 회원 정보, 대화 기록을 안전하게 보관하는 [거대한 금고]</span>
               </li>
               <li style={{ display: 'flex', gap: '12px', fontSize: '1.05rem', color: '#334155', lineHeight: 1.6 }}>
                 <CheckCircle2 color="#d97706" size={24} style={{ flexShrink: 0 }} />
-                <span><strong>Vector DB (Chroma, Pinecone):</strong> 텍스트를 숫자 벡터(Embedding)로 저장</span>
+                <span><strong>Vector DB (AI 도서관):</strong> 단어의 '뜻'을 이해해서 비슷한 의미를 찾아냄!</span>
               </li>
               <li style={{ display: 'flex', gap: '12px', fontSize: '1.05rem', color: '#334155', lineHeight: 1.6 }}>
                 <CheckCircle2 color="#d97706" size={24} style={{ flexShrink: 0 }} />
-                <span><strong>Semantic Search:</strong> 키워드가 달라도 <strong>의미가 유사한 문서</strong>를 AI가 즉시 검색!</span>
+                <span><strong>RAG (검색 증강):</strong> 회사 문서를 Vector DB에 넣고 AI가 읽은 뒤 대답하게 함</span>
               </li>
             </ul>
           </div>
           <div style={{ background: '#fef3c7', border: '1px solid #fde68a', padding: '32px', borderRadius: '20px' }}>
-            <h4 style={{ color: '#b45309', fontWeight: 800, fontSize: '1.2rem', marginBottom: '14px' }}>🔍 RAG 동작 순서 3단계</h4>
-            <ol style={{ fontSize: '1rem', color: '#78350f', lineHeight: 1.8, paddingLeft: '24px' }}>
-              <li>문서 텍스트 ➔ <strong>임베딩 벡터 변환</strong></li>
-              <li>유저 질문과 가장 유사한 문서 <strong>Vector DB에서 검색</strong></li>
-              <li>검색된 문서를 <strong>LLM 프롬프트에 주입하여 정확한 답변 생성!</strong></li>
-            </ol>
+            <h4 style={{ color: '#b45309', fontWeight: 800, fontSize: '1.2rem', marginBottom: '14px' }}>🔍 Vector DB의 마법</h4>
+            <p style={{ fontSize: '1.05rem', color: '#78350f', lineHeight: 1.8 }}>
+              사용자가 <strong>"배고파!"</strong> 라고 검색해도, AI가 의미를 이해하고 <strong>"음식점 추천 문서"</strong>를 찾아내는 신기한 기술!
+            </p>
           </div>
         </div>
       )
@@ -252,8 +246,8 @@ async def chat(user_msg: str):
       content: (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', alignItems: 'center', textAlign: 'center' }}>
           <p style={{ fontSize: '1.25rem', color: '#1e293b', maxWidth: '800px', lineHeight: 1.8, fontWeight: 500 }}>
-            이제 AI 생태계의 5대 필수 영역을 모두 파악하셨습니다! <br/>
-            아래 버튼을 눌러 **JSON 유효성 검사**와 **마크다운 에디터**를 직접 작성해보세요.
+            축하합니다! 이제 AI 서비스가 작동하는 원리와 핵심 용어를 이해하셨습니다! <br/>
+            아래 버튼을 눌러 **JSON 메모지**와 **마크다운 문서**를 직접 편집해보세요.
           </p>
 
           <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
@@ -359,7 +353,7 @@ async def chat(user_msg: str):
             <Icon size={32} />
             <span style={{ fontSize: '1.15rem' }}>{slide.tag}</span>
           </div>
-          <h2 style={{ fontSize: '2.6rem', fontWeight: 800, color: '#0f172a', marginBottom: '10px', letterSpacing: '-0.02em' }}>
+          <h2 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#0f172a', marginBottom: '10px', letterSpacing: '-0.02em' }}>
             {slide.title}
           </h2>
           <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', fontWeight: 500 }}>

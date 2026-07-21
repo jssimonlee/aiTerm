@@ -1,51 +1,41 @@
 import React, { useState } from 'react';
-import { Code, CheckCircle, AlertTriangle, Copy, RotateCcw, Wrench, Sparkles, FileCode } from 'lucide-react';
+import { Code, CheckCircle, AlertTriangle, Copy, RotateCcw, Wrench, Sparkles, FileCode, HelpCircle } from 'lucide-react';
 
 export default function JsonLab() {
   const templates = {
     openai: `{
-  "model": "gpt-4o",
-  "messages": [
-    {
-      "role": "system",
-      "content": "너는 유능한 AI 스터디 튜터이다."
-    },
-    {
-      "role": "user",
-      "content": "JSON 포맷이 AI에서 왜 자주 쓰이나요?"
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500,
-  "stream": false
+  "보낸사람": "스마트폰 앱",
+  "받는사람": "ChatGPT AI",
+  "요청내용": "오늘 스터디 주제인 JSON을 한 문장으로 요약해줘!",
+  "옵션": {
+    "친절도": "최상",
+    "답변언어": "한국어"
+  }
 }`,
     structured: `{
-  "task": "뉴스 기사 요약 및 감정 분석",
-  "input_text": "오늘 발표회에서 AI 관련 기술 용어에 대한 열띤 토론이 진행되었습니다.",
-  "response_schema": {
-    "summary": "AI 용어 스터디 발표 성료",
-    "sentiment": "POSITIVE",
-    "confidence_score": 0.95,
-    "keywords": ["AI", "발표", "스터디", "기술용어"]
+  "작업": "AI 뉴스 요약",
+  "입력문장": "AI 용어 스터디 발표회에서 초보자용 비유 설명회가 큰 호응을 얻었습니다.",
+  "AI추출결과": {
+    "요약": "초보자 AI 스터디 발표 성공",
+    "분위기": "매우 긍정적",
+    "키워드": ["AI", "초보자", "스터디", "비유"]
   }
 }`,
     rag: `{
-  "document_id": "doc_rag_2026_07",
-  "chunk_id": 4,
-  "content": "Vector DB는 단어를 임베딩 벡터로 변환하여 유사도 검색을 수행합니다.",
-  "metadata": {
-    "author": "스터디 리더",
-    "category": "Database",
-    "vector_dim": 1536,
-    "is_active": true
+  "문서제목": "AI 스터디 가이드",
+  "페이지": 1,
+  "내용": "JSON은 앱 ↔ AI 간 통신용 표준 메모지입니다.",
+  "메타데이터": {
+    "작성자": "스터디 리더",
+    "카테고리": "기초 용어",
+    "중요도": 5
   }
 }`,
     broken: `{
-  model: "gpt-4o",
-  "messages": [
-    { "role": "user", "content": "JSON 에러 고치기 문제!" }
-  ],
-  "temperature": 0.7,
+  보낸사람: "스마트폰 앱",
+  "받는사람": "ChatGPT",
+  "질문": "JSON 에러 고치기 문제!",
+  "온도": 0.7,
 }`
   };
 
@@ -91,27 +81,27 @@ export default function JsonLab() {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '24px' }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
-              <span className="badge badge-purple">Interactive Practice</span>
-              <span style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', fontWeight: 500 }}>실시간 JSON 에디터 & 파서</span>
+              <span className="badge badge-purple">초보자 실습</span>
+              <span style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', fontWeight: 500 }}>실시간 JSON 통신 메모지 에디터</span>
             </div>
             <h2 style={{ fontSize: '1.8rem', fontWeight: 800, color: '#0f172a' }}>
               🧪 <span className="gradient-text">JSON 실습실</span> (JSON Lab)
             </h2>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.98rem', marginTop: '6px' }}>
-              LLM API 요청/응답 형식의 JSON을 작성하고, 문법 규칙 유효성을 실시간으로 확인해보세요.
+              스마트폰 앱과 AI가 대화할 때 쓰는 <strong>'JSON 통신 메모지'</strong>를 직접 수정하고 검증해보세요!
             </p>
           </div>
 
           {/* Preset Template Selectors */}
           <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
             <button className="btn-secondary" onClick={() => setJsonInput(templates.openai)}>
-              <FileCode size={16} /> OpenAI API 예시
+              <FileCode size={16} /> 앱 ➔ AI 대화 메모
             </button>
             <button className="btn-secondary" onClick={() => setJsonInput(templates.structured)}>
-              <Sparkles size={16} /> AI JSON Mode
+              <Sparkles size={16} /> AI 추출 결과 메모
             </button>
             <button className="btn-secondary" onClick={() => setJsonInput(templates.rag)}>
-              <Code size={16} /> RAG 메타데이터
+              <Code size={16} /> 문서 저장 메모
             </button>
             <button 
               className="btn-secondary" 
@@ -124,7 +114,7 @@ export default function JsonLab() {
         </div>
       </div>
 
-      {/* Editor & Viewer Split Grid with 32px gap */}
+      {/* Editor & Viewer Split Grid */}
       <div style={{ display: 'grid', gridTemplateColumns: 'minmax(350px, 1fr) minmax(350px, 1fr)', gap: '32px' }}>
         
         {/* Left Side: Code Input Area */}
@@ -134,18 +124,18 @@ export default function JsonLab() {
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px', paddingBottom: '16px', borderBottom: '1px solid var(--border-color)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <Code size={20} color="var(--accent-purple)" />
-              <span style={{ fontWeight: 800, fontSize: '1.05rem', color: '#0f172a' }}>JSON 입력란</span>
+              <span style={{ fontWeight: 800, fontSize: '1.05rem', color: '#0f172a' }}>JSON 메모지 입력란</span>
             </div>
 
             {/* Validation Badge */}
             <div>
               {isValid ? (
                 <span className="badge badge-green" style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
-                  <CheckCircle size={14} /> Valid JSON
+                  <CheckCircle size={14} /> 올바른 JSON 규격
                 </span>
               ) : (
                 <span className="badge badge-pink" style={{ display: 'flex', gap: '6px', alignItems: 'center', background: '#fee2e2', color: '#dc2626', border: '1px solid #fca5a5' }}>
-                  <AlertTriangle size={14} /> Syntax Error
+                  <AlertTriangle size={14} /> 문법 에러 발견!
                 </span>
               )}
             </div>
@@ -176,10 +166,10 @@ export default function JsonLab() {
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '16px', gap: '12px', flexWrap: 'wrap' }}>
             <div style={{ display: 'flex', gap: '10px' }}>
               <button className="btn-secondary" onClick={handleFormat} disabled={!isValid} style={{ opacity: isValid ? 1 : 0.5 }}>
-                정렬 (Prettify)
+                예쁘게 정렬하기
               </button>
               <button className="btn-secondary" onClick={handleMinify} disabled={!isValid} style={{ opacity: isValid ? 1 : 0.5 }}>
-                압축 (Minify)
+                한 줄로 압축하기
               </button>
             </div>
             <div style={{ display: 'flex', gap: '10px' }}>
@@ -199,10 +189,10 @@ export default function JsonLab() {
           
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px', paddingBottom: '16px', borderBottom: '1px solid var(--border-color)' }}>
             <span style={{ fontWeight: 800, fontSize: '1.05rem', color: '#0f172a', display: 'flex', alignItems: 'center', gap: '10px' }}>
-              🔍 {isValid ? '파싱 결과 & 트리 뷰' : '에러 진단 리포트'}
+              🔍 {isValid ? '컴퓨터가 해석한 결과 (트리 뷰)' : '에러 진단 리포트'}
             </span>
             <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontWeight: 500 }}>
-              {isValid ? '정상 파싱됨' : '문법 검사 실패'}
+              {isValid ? '정상 수신됨' : '해석 불가'}
             </span>
           </div>
 
@@ -211,33 +201,31 @@ export default function JsonLab() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 <div style={{ background: '#d1fae5', border: '1px solid #a7f3d0', padding: '18px', borderRadius: '12px' }}>
                   <h4 style={{ color: '#047857', fontSize: '0.95rem', fontWeight: 800, marginBottom: '6px' }}>
-                    ✅ 유효한 JSON 포맷입니다!
+                    ✅ 컴퓨터가 완벽하게 해석할 수 있는 JSON입니다!
                   </h4>
                   <p style={{ fontSize: '0.88rem', color: '#065f46' }}>
-                    루트 데이터 타입: <strong>{Array.isArray(parsedJson) ? 'Array (배열)' : typeof parsedJson}</strong> 
-                    {typeof parsedJson === 'object' && parsedJson !== null && !Array.isArray(parsedJson) && (
-                      <span> ({Object.keys(parsedJson).length}개의 Key 소유)</span>
-                    )}
+                    이 메모지는 <strong>{Object.keys(parsedJson).length}개</strong>의 이름표(Key)를 가지고 있습니다.
                   </p>
                 </div>
 
                 {/* Parsed Output Display */}
                 <div style={{ background: '#0f172a', padding: '20px', borderRadius: '12px', border: '1px solid #1e293b' }}>
                   <h5 style={{ fontSize: '0.85rem', color: '#94a3b8', marginBottom: '10px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                    Javascript Object Tree
+                    해석된 데이터 구조
                   </h5>
                   <pre className="code-font" style={{ fontSize: '0.9rem', color: '#a7f3d0', whiteSpace: 'pre-wrap', wordBreak: 'break-word', lineHeight: 1.6 }}>
                     {JSON.stringify(parsedJson, null, 2)}
                   </pre>
                 </div>
 
-                {/* Educational JSON Key Rules Reminder */}
+                {/* Educational JSON vs DB Distinction */}
                 <div style={{ background: '#f3e8ff', border: '1px solid #e9d5ff', padding: '18px', borderRadius: '12px' }}>
-                  <h5 style={{ fontSize: '0.92rem', color: '#6d28d9', fontWeight: 800, marginBottom: '6px' }}>
-                    💡 발표 팁 (Presentation Tip)
+                  <h5 style={{ fontSize: '0.95rem', color: '#6d28d9', fontWeight: 800, marginBottom: '6px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <HelpCircle size={18} /> JSON과 DB(데이터베이스)의 결정적 차이!
                   </h5>
                   <p style={{ fontSize: '0.88rem', color: '#4c1d95', lineHeight: 1.6 }}>
-                    LLM API 호출 시 <code>"stream": true</code> 옵션을 주면 Server-Sent Events(SSE)를 통해 JSON 기반의 스트리밍 토큰 조각들이 전송됩니다.
+                    • <strong>JSON</strong>: 통신할 때 데이터를 포장하는 <u>[택배 상자/메모지]</u>입니다.<br/>
+                    • <strong>DB</strong>: 수백만 개의 택배 상자를 안전하게 보관하고 필요할 때 찾아내는 <u>[거대한 도서관 금고]</u>입니다.
                   </p>
                 </div>
 
@@ -248,7 +236,7 @@ export default function JsonLab() {
                 {/* Error Banner */}
                 <div style={{ background: '#fee2e2', border: '1px solid #fca5a5', padding: '20px', borderRadius: '12px' }}>
                   <h4 style={{ color: '#b91c1c', fontSize: '0.98rem', fontWeight: 800, marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <AlertTriangle size={20} /> JSON 문법 에러가 발생했습니다
+                    <AlertTriangle size={20} /> 컴퓨터가 메모지를 해석하지 못했습니다!
                   </h4>
                   <pre className="code-font" style={{ fontSize: '0.88rem', color: '#7f1d1d', whiteSpace: 'pre-wrap', background: '#fef2f2', padding: '14px', borderRadius: '8px', border: '1px solid #fecaca' }}>
                     {errorMessage}
@@ -258,13 +246,12 @@ export default function JsonLab() {
                 {/* Checklist to Fix Error */}
                 <div style={{ background: '#fef3c7', border: '1px solid #fde68a', padding: '20px', borderRadius: '12px' }}>
                   <h5 style={{ fontSize: '0.95rem', color: '#b45309', fontWeight: 800, marginBottom: '10px' }}>
-                    🛠️ 흔히 발생하는 JSON 에러 체크리스트
+                    🛠️ 초보자가 자주 하는 3가지 JSON 실수
                   </h5>
                   <ul style={{ fontSize: '0.88rem', color: '#78350f', display: 'flex', flexDirection: 'column', gap: '8px', paddingLeft: '20px', lineHeight: 1.6 }}>
-                    <li><strong>키(Key)의 큰따옴표 누락:</strong> <code>model: "gpt"</code> ➔ <code>"model": "gpt"</code></li>
-                    <li><strong>Trailing Comma (마지막 콤마):</strong> 마지막 항목 뒤에 콤마가 남아있는지 확인하세요.</li>
-                    <li><strong>홑따옴표 사용:</strong> JSON은 작은따옴표(<code>'</code>) 대신 큰따옴표(<code>"</code>)만 허용합니다.</li>
-                    <li><strong>괄호 짝 맺기:</strong> 중괄호 <code>{"{ }"}</code> 와 대괄호 <code>{"[ ]"}</code> 짝이 맞는지 검사하세요.</li>
+                    <li><strong>1. 이름표에 큰따옴표 누락:</strong> <code>보낸사람: "앱"</code> ➔ <code>"보낸사람": "앱"</code></li>
+                    <li><strong>2. 마지막 쉼표(,) 남겨둠:</strong> 항목이 끝났는데 마지막에 <code>,</code>를 붙이면 에러가 납니다.</li>
+                    <li><strong>3. 작은따옴표(') 사용:</strong> JSON은 꼭 큰따옴표(<code>"</code>)만 써야 합니다!</li>
                   </ul>
                 </div>
 
