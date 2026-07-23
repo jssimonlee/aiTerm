@@ -8,7 +8,7 @@ export default function QuizSection() {
       question: 'JSON과 DB(데이터베이스)의 결정적 차이점에 대한 설명으로 가장 올바른 것은?',
       options: [
         'JSON과 DB는 똑같은 소프트웨어이다.',
-        'JSON은 앱 간 통신 시 데이터를 담는 [택배 상자/메모지]이고, DB는 수백만 개의 데이터를 안전하게 보관하는 [거대한 도서관 금고]이다.',
+        'JSON은 통신할 때 소량의 데이터를 포장하는 [택배 상자/메모지]이고, DB는 수백만 개의 데이터를 안전하게 보관하는 [거대한 금고]이다.',
         'JSON은 한글만 저장하고, DB는 영어만 저장한다.',
         'JSON을 사용하면 AI가 필요 없다.'
       ],
@@ -53,15 +53,15 @@ export default function QuizSection() {
     },
     {
       id: 5,
-      question: '사용자가 "배고파!"라고 검색했을 때 "음식점 추천" 문서의 의미를 파악해서 찾아주는 AI 전용 DB는?',
+      question: '일반적인 SQL 데이터베이스(RDB)와 AI 특화 Vector DB의 검색 방식 차이점으로 올바른 것은?',
       options: [
-        '단어의 뜻(의미적 유사도)을 찾아주는 Vector Database (벡터 DB)',
-        '마이크로소프트 엑셀',
-        '컴퓨터 계산기',
-        '종이 수첩'
+        '일반 SQL DB는 정확히 일치하는 조건(예: ID=hong)을 찾고, Vector DB는 문장의 "의미/뜻"이 비슷한 문서를 찾아낸다.',
+        '일반 SQL DB는 전기를 쓰지 않고, Vector DB는 전기를 쓴다.',
+        '일반 SQL DB는 사진만 저장하고, Vector DB는 음악만 저장한다.',
+        '두 DB는 작동 방식이 완전히 똑같다.'
       ],
       correctAnswer: 0,
-      explanation: 'Vector DB는 텍스트의 "의미"를 숫자로 변환(임베딩)하여 키워드가 정확히 일치하지 않아도 뜻이 비슷한 문서를 AI가 검색하도록 돕습니다.'
+      explanation: '일반 SQL DB는 회원/결제 데이터처럼 조건이 정확히 일치하는 데이터를 찾고, Vector DB는 "배고파" 입력 시 "음식점 추천 문서"를 찾아내듯 뜻이 비슷한 문서를 AI가 검색하도록 만듭니다.'
     }
   ];
 
@@ -105,7 +105,7 @@ export default function QuizSection() {
               💡 <span className="gradient-text">AI 용어 & 비유 점검 퀴즈</span>
             </h2>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.98rem', marginTop: '6px' }}>
-              오늘 배운 5가지 개념(JSON 메모지, 마크다운, 프론트엔드, 백엔드, Vector DB)에 대한 퀴즈를 풀며 실력을 확인해보세요!
+              오늘 배운 5가지 개념(JSON 메모지, 마크다운, 프론트엔드, 백엔드, DB: SQL vs Vector DB)에 대한 퀴즈를 풀어보세요!
             </p>
           </div>
 

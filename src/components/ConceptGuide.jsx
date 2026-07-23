@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Code, FileText, Monitor, Server, Database, ArrowRight, CheckCircle2, Lightbulb, Zap, HelpCircle } from 'lucide-react';
+import { Code, FileText, Monitor, Server, Database, ArrowRight, CheckCircle2, Lightbulb, Zap, HelpCircle, HardDrive } from 'lucide-react';
 
 export default function ConceptGuide({ onSelectLab }) {
-  const [selectedConcept, setSelectedConcept] = useState('json');
+  const [selectedConcept, setSelectedConcept] = useState('database');
 
   const concepts = [
     {
@@ -110,26 +110,29 @@ def ask_ai(user_question):
     },
     {
       id: 'database',
-      title: '데이터베이스 (DB & Vector DB)',
-      badge: '체계적인 거대 금고',
+      title: '데이터베이스 (DB)',
+      badge: '데이터 금고 & AI 도서관',
       badgeClass: 'badge-amber',
       icon: Database,
-      summary: '수백만 개의 데이터를 안전하게 보관하는 거대 금고 + 뜻(의미)으로 검색하는 AI 도서관!',
-      aiImportance: 'RAG (검색 증강 생성) - AI가 거짓말하지 않고 우리 회사 비밀 문서를 읽고 답하게 만드는 핵심 기술',
-      description: `데이터베이스(DB)는 수많은 정보를 절대 잃어버리지 않고 필요할 때 순식간에 찾아내는 **거대한 전자 서류함/금고**입니다.
+      summary: '일반적으로 쓰이는 [SQL 관계형 DB]부터 AI에서 특화된 [Vector DB] 비교 정리!',
+      aiImportance: '일반 DB로 회원/결제 정보를 저장하고, AI 특화 Vector DB로 문장의 뜻을 찾아 RAG(검색 증강)에 활용!',
+      description: `데이터베이스(DB)는 서비스의 수많은 데이터(회원 정보, 결제 내역, 게시글 등)를 절대 잃어버리지 않고 안전하게 보관하는 **거대한 전자 금고**입니다.
 
-특히 AI 시대에는 단어의 '뜻'을 이해해서 비슷한 의미를 찾아주는 **Vector DB(벡터 데이터베이스)**가 핵심입니다!`,
+가장 흔하게 쓰이는 **일반 DB(SQL/RDB)**와 AI 시대에 떠오른 **Vector DB**의 역할과 차이점을 비교해 보세요!`,
       keyPoints: [
-        '📁 일반 DB vs JSON: JSON은 종이 봉투 1개에 담긴 서류이고, DB는 수백만 개 서류를 자동 정렬해둔 거대 도서관 금고!',
-        '🧠 Vector DB (AI 전용 DB): 키워드가 안 맞아도 의미가 비슷하면 찾아냄! (예: "배고파" ➔ "음식점 메뉴" 검색)',
-        '🎯 RAG 기술: AI가 모르는 최신 정보나 회사 내부 문서를 Vector DB에서 찾아서 AI에게 알려준 뒤 대답하게 함!'
+        '📊 1. 일반적인 DB (SQL / 관계형 DB): 엑셀표처럼 행과 열로 된 정형 데이터 저장 (MySQL, PostgreSQL 등). 회원가입, 결제, 게시글 등 웹/앱 개발 실무의 99%를 담당하는 핵심 금고입니다.',
+        '🍃 2. NoSQL DB: 형식이 자유로운 문서나 대화 세션, 캐시 데이터 저장 (MongoDB, Redis 등).',
+        '🧠 3. AI 특화 DB (Vector DB): 단어와 문장의 "뜻(의미)"을 숫자(벡터)로 변환해 저장하는 DB (Chroma, Pinecone 등).',
+        '🔍 [핵심 비교] 검색 방식의 차이:',
+        '   - 일반 SQL DB: "아이디 = hong123" 처럼 정확하게 일치하는 단어/숫자를 검색',
+        '   - AI Vector DB: "배고픈데 뭐 먹지?" 입력 시 키워드가 달라도 의미가 비슷한 "음식점 추천 문서"를 검색!'
       ],
-      codeExample: `// 🔍 Vector DB: 의미 기반 검색 예시
-사용자 질문: "휴가 쓰려면 어떻게 해?"
-  ⬇️ (의미가 비슷한 문서 찾아라!)
-Vector DB 검색 결과: "제 3조: 연차 휴가 신청은 3일 전 제출..."
-  ⬇️ (이 내용을 바탕으로 AI가 대답!)
-AI: "연차 휴가는 3일 전에 신청서를 제출하시면 됩니다!"`
+      codeExample: `// 1. 일반적인 SQL DB (개발의 메인 금고 - 정확한 조건 검색)
+SELECT * FROM users WHERE user_id = 'hong123'; // ID가 exact 일치하는 회원 조회
+
+// 2. AI 특화 Vector DB (의미 기반 유사도 검색)
+VectorDB.search("연차 휴가 신청은 어떻게 하나요?"); 
+// ➔ 키워드가 딱 안 맞아도 '뜻'이 비슷한 "제3조: 휴가 가이드 문서"를 찾아냄!`
     }
   ];
 
@@ -144,14 +147,14 @@ AI: "연차 휴가는 3일 전에 신청서를 제출하시면 됩니다!"`
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
               <span className="badge badge-purple">초보자 맞춤 가이드</span>
-              <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', fontWeight: 600 }}>아주 쉬운 비유와 예시</span>
+              <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', fontWeight: 600 }}>개발 기초 & AI 활용 비교</span>
             </div>
             <h2 style={{ fontSize: '2.1rem', fontWeight: 800, marginBottom: '12px', color: '#0f172a', letterSpacing: '-0.02em' }}>
-              AI 개발의 기초 <span className="gradient-text">5가지 핵심 개념</span>
+              개발 기본부터 알기 쉬운 <span className="gradient-text">5가지 핵심 개념</span>
             </h2>
             <p style={{ color: 'var(--text-secondary)', maxWidth: '850px', fontSize: '1.08rem', lineHeight: 1.8 }}>
-              어려운 개발 용어는 이제 그만! <strong>JSON, Markdown, 프론트엔드, 백엔드, DB</strong>를 
-              실생활 비유로 쉽게 이해하고 AI와 대화하는 법을 익혀보세요.
+              어려운 용어는 그만! <strong>JSON, Markdown, 프론트엔드, 백엔드, DB (일반 SQL vs Vector DB)</strong>를 
+              실생활 비유와 비교 설명으로 쉽게 이해해 보세요.
             </p>
           </div>
           <div style={{ display: 'flex', gap: '14px' }}>
@@ -229,7 +232,7 @@ AI: "연차 휴가는 3일 전에 신청서를 제출하시면 됩니다!"`
           <div style={{ borderBottom: '1px solid var(--border-color)', paddingBottom: '20px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
               <span className={`badge ${activeData.badgeClass}`}>{activeData.badge}</span>
-              <span style={{ color: 'var(--text-muted)', fontSize: '0.9rem', fontWeight: 600 }}>쉬운 개념 설명</span>
+              <span style={{ color: 'var(--text-muted)', fontSize: '0.9rem', fontWeight: 600 }}>쉬운 개념 설명 & 비교</span>
             </div>
             <h2 style={{ fontSize: '2.1rem', fontWeight: 800, color: '#0f172a' }}>{activeData.title}</h2>
           </div>
@@ -247,7 +250,7 @@ AI: "연차 휴가는 3일 전에 신청서를 제출하시면 됩니다!"`
             <Lightbulb size={30} color="var(--accent-purple)" style={{ flexShrink: 0, marginTop: '2px' }} />
             <div>
               <h4 style={{ fontSize: '1.05rem', color: 'var(--accent-purple)', fontWeight: 800, marginBottom: '6px' }}>
-                💡 왜 AI에서 그렇게 중요할까요?
+                💡 핵심요약 & AI에서의 역할
               </h4>
               <p style={{ fontSize: '1rem', color: '#1e293b', lineHeight: 1.7, fontWeight: 600 }}>
                 {activeData.aiImportance}
@@ -258,7 +261,7 @@ AI: "연차 휴가는 3일 전에 신청서를 제출하시면 됩니다!"`
           {/* Description */}
           <div>
             <h4 style={{ fontSize: '1.1rem', fontWeight: 800, marginBottom: '12px', color: '#0f172a' }}>
-              📌 한 문장 쉬운 개념
+              📌 기본 개념
             </h4>
             <p style={{ fontSize: '1.02rem', color: 'var(--text-secondary)', lineHeight: 1.8, whiteSpace: 'pre-line' }}>
               {activeData.description}
@@ -283,7 +286,7 @@ AI: "연차 휴가는 3일 전에 신청서를 제출하시면 됩니다!"`
           {/* Real Code Example Box */}
           <div>
             <h4 style={{ fontSize: '1.05rem', fontWeight: 800, marginBottom: '12px', color: '#0f172a' }}>
-              💻 쉬운 예시 모습
+              💻 실체 예시 구문 / 코드
             </h4>
             <pre style={{
               background: '#0f172a',
